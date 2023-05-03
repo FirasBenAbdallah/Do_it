@@ -16,6 +16,7 @@ struct AddEvent: View {
     @State private var wrongend: Int = 0
     @State private var wrongdesc: Int = 0
     
+    @State var text: String = ""
     @State private var username = ""
     @State private var location = ""
     @State private var start = ""
@@ -33,11 +34,14 @@ struct AddEvent: View {
                                 .scaledToFit()
                         } else {
                             Text("No image selected")
+                                .foregroundColor(Color.black.opacity(0.5))
                         }
                         
                         Button("Select Image") {
                             self.showImagePicker = true
                         }
+                        .padding()
+                        .padding(.bottom, 20)
                     }
                     .sheet(isPresented: $showImagePicker) {
                         ImagePicker(selectedImage: self.$selectedImage)
@@ -45,83 +49,70 @@ struct AddEvent: View {
             VStack{
                 TextField("Event Name", text: $username)
                     .padding()
-                    .frame(width: 300, height: 50)
-                    .background(Color.black.opacity(0.03))
-                    .border(Color.accentColor)
-                    .border(.red, width: CGFloat(wrongUsername))
+                    .frame(width: 320, height: 50)
+                    .background(Color.white)
+                    .cornerRadius(20.0)
+                    .shadow(color: Color.gray.opacity(0.6), radius: 3, x: 1, y: 2)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20.0)
+                            .stroke(wrongUsername == 1 ? Color.red.opacity(0.7) : Color.accentColor, lineWidth: 0.5)
+                        )
+                    .disableAutocorrection(true)
                 Spacer().frame(height: 10)
+
                 TextField("Location", text: $location)
                     .padding()
-                    .frame(width: 300, height: 50)
-                    .background(Color.black.opacity(0.03))
-                    .border(Color.accentColor)
-                    .border(.red, width: CGFloat(wronglocation))
+                    .frame(width: 320, height: 50)
+                    .background(Color.white)
+                    .cornerRadius(20.0)
+                    .shadow(color: Color.gray.opacity(0.6), radius: 3, x: 1, y: 2)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20.0)
+                            .stroke(wronglocation == 1 ? Color.red.opacity(0.7) : Color.accentColor, lineWidth: 0.5)
+                        )
+                    .disableAutocorrection(true)
                 Spacer().frame(height: 10)
+                
                 DatePickerTextField(placeholder: "Starts", date: self.$date)
                     .padding()
-                    .frame(width: 300, height: 50)
-                    .background(Color.black.opacity(0.03))
-                    .border(Color.accentColor)
-                    .border(.red, width: CGFloat(wrongstart))
+                    .frame(width: 320, height: 50)
+                    .background(Color.white)
+                    .cornerRadius(20.0)
+                    .shadow(color: Color.gray.opacity(0.6), radius: 3, x: 1, y: 2)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20.0)
+                            .stroke(wrongstart == 1 ? Color.red.opacity(0.7) : Color.accentColor, lineWidth: 0.5)
+                        )
+                    .disableAutocorrection(true)
                 Spacer().frame(height: 10)
+                
                 DatePickerTextField2(placeholder: "Ends", date: self.$date2)
                     .padding()
-                    .frame(width: 300, height: 50)
-                    .background(Color.black.opacity(0.03))
-                    .border(Color.accentColor)
-                    .border(.red, width: CGFloat(wrongend))
+                    .frame(width: 320, height: 50)
+                    .background(Color.white)
+                    .cornerRadius(20.0)
+                    .shadow(color: Color.gray.opacity(0.6), radius: 3, x: 1, y: 2)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20.0)
+                            .stroke(wrongend == 1 ? Color.red.opacity(0.7) : Color.accentColor, lineWidth: 0.5)
+                        )
+                    .disableAutocorrection(true)
                 Spacer().frame(height: 10)
+                
                 TextField("Description", text: $desc)
                     .padding()
-                    .frame(width: 300, height: 50)
-                    .background(Color.black.opacity(0.03))
-                    .border(Color.accentColor)
-                    .border(.red, width: CGFloat(wrongdesc))
+                    .frame(width: 320, height: 50)
+                    .background(Color.white)
+                    .cornerRadius(20.0)
+                    .shadow(color: Color.gray.opacity(0.6), radius: 3, x: 1, y: 2)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20.0)
+                            .stroke(wrongdesc == 1 ? Color.red.opacity(0.7) : Color.accentColor, lineWidth: 0.5)
+                        )
+                    .disableAutocorrection(true)
                 //Spacer().frame(height: 10)
-                Button("Add") {
-                    var x = 1
-                    if (username.count > 0){
-                        wrongUsername = 0
-                        x=0
-                    } else {
-                        wrongUsername = 1
-                        x=1
-                    }
-                    if (location.count > 0){
-                        wronglocation = 0
-                        x=0
-                    } else {
-                        wronglocation = 1
-                        x=1
-                    }
-                    if let unwrappedDate = date {
-                        let dateString = "\(unwrappedDate)"
-                        print("start: \(dateString)")
-                        let dateLength = dateString.count
-                            wrongstart = 0
-                            x=0
-                    } else {
-                        wrongstart = 1
-                        x=1
-                    }
-                    if let unwrappedDate2 = date2 {
-                        let dateString2 = "\(unwrappedDate2)"
-                        let dateLength2 = dateString2.count
-                            wrongend = 0
-                            x=0
-                    } else {
-                        wrongend = 1
-                        x=1
-                    }
-                    if (desc.count > 0){
-                        wrongdesc = 0
-                        x=0
-                    } else {
-                        wrongdesc = 1
-                        x=1
-                    }
-                    x=0
-                    if x == 0 {
+                /*Button("Add") {
+                    if validateFields() {
                         addEvent()
                     }
                 }
@@ -129,11 +120,49 @@ struct AddEvent: View {
                 .frame(width: 300, height: 50)
                 .background(Color.accentColor)
                 .cornerRadius(10)
-                .padding(.top, 0)
+                .padding(.top, 0)*/
+                Button(action: {
+                    if validateFields() {
+                        addEvent()
+                    }
+                }) {
+                    Text("Add")
+                        .font(.headline)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(width: 320)
+                        .background(Color.accentColor.opacity(0.8))
+                        .cornerRadius(10)
+                        .shadow(radius: 5, y: 2)
+                        .padding(.top, 10)
+                }
+
+
             }
         }
         
     }
+    
+    func validateFields() -> Bool {
+        if username.isEmpty || location.isEmpty || date == nil || date2 == nil || desc.isEmpty {
+            wrongUsername = username.isEmpty ? 1 : 0
+            wronglocation = location.isEmpty ? 1 : 0
+            wrongstart = date == nil ? 1 : 0
+            wrongend = date2 == nil ? 1 : 0
+            wrongdesc = desc.isEmpty ? 1 : 0
+            return false
+        }
+        
+        wrongUsername = 0
+        wronglocation = 0
+        wrongstart = 0
+        wrongend = 0
+        wrongdesc = 0
+        return true
+    }
+
+    
     func addEvent() {
             // Set the URL of your Node.js server
             guard let url = URL(string: "http://172.17.4.2:3000/addevent") else { return }
