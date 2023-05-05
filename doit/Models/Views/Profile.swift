@@ -59,6 +59,12 @@ struct Profile: View {
                         ProfileRow(title: "Langues", imageName: "globe")
                         
                     }
+                    
+                    NavigationLink(destination: AboutView()) {
+                        ProfileRow(title: "Rate us", imageName: "star")
+                        
+                    }
+                    
                 }
                 Button(action: {
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)

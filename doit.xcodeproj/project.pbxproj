@@ -24,6 +24,7 @@
 		F546D0C829E8EA5500387E2A /* AddEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F546D0C729E8EA5500387E2A /* AddEvent.swift */; };
 		F546D0CC29E8EBFA00387E2A /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F546D0CB29E8EBFA00387E2A /* Profile.swift */; };
 		F563666929D4DEF300AA03F3 /* Sacramento-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F563666829D4DEF300AA03F3 /* Sacramento-Regular.ttf */; };
+		F5A120202A04FEAB0054B681 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A1201F2A04FEAB0054B681 /* AboutView.swift */; };
 		F5B0098429EFBE7B00A10B2D /* ChatScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B0098329EFBE7B00A10B2D /* ChatScreen.swift */; };
 		F5E08E8D29DFD397006C5A97 /* ResetPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E08E8C29DFD397006C5A97 /* ResetPass.swift */; };
 		F5E08E8F29DFD3E2006C5A97 /* SendCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E08E8E29DFD3E2006C5A97 /* SendCode.swift */; };
@@ -52,6 +53,7 @@
 		F546D0C729E8EA5500387E2A /* AddEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEvent.swift; sourceTree = "<group>"; };
 		F546D0CB29E8EBFA00387E2A /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		F563666829D4DEF300AA03F3 /* Sacramento-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sacramento-Regular.ttf"; sourceTree = "<group>"; };
+		F5A1201F2A04FEAB0054B681 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		F5B0098329EFBE7B00A10B2D /* ChatScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatScreen.swift; sourceTree = "<group>"; };
 		F5E08E8C29DFD397006C5A97 /* ResetPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPass.swift; sourceTree = "<group>"; };
 		F5E08E8E29DFD3E2006C5A97 /* SendCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendCode.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				F52D613229C46C7000ECE8A7 /* LaunchScreen.storyboard */,
 				F52D613529C46C7000ECE8A7 /* Info.plist */,
 				F512ADAF29E8BB860087645A /* ContentView.swift */,
+				F5A1201F2A04FEAB0054B681 /* AboutView.swift */,
 			);
 			path = doit;
 			sourceTree = "<group>";
@@ -174,6 +177,8 @@
 			dependencies = (
 			);
 			name = doit;
+			packageProductDependencies = (
+			);
 			productName = doit;
 			productReference = F52D612429C46C6F00ECE8A7 /* doit.app */;
 			productType = "com.apple.product-type.application";
@@ -202,6 +207,10 @@
 				Base,
 			);
 			mainGroup = F52D611B29C46C6F00ECE8A7;
+			packageReferences = (
+				F5AC437A2A048C2000E8B053 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				F5AC437D2A04B37D00E8B053 /* XCRemoteSwiftPackageReference "stream-chat-swift" */,
+			);
 			productRefGroup = F52D612529C46C6F00ECE8A7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -234,6 +243,7 @@
 				F5FD33E029EFB84900744346 /* ShareSheet.swift in Sources */,
 				F546D0C629E8EA4700387E2A /* Acceuil.swift in Sources */,
 				F5095F3129EF738300904BAF /* LocalizationManager.swift in Sources */,
+				F5A120202A04FEAB0054B681 /* AboutView.swift in Sources */,
 				F50DAD2629FAF79B00640265 /* Map.swift in Sources */,
 				F521132C29FB74DA0062F2BB /* date2.swift in Sources */,
 				F512ADAE29E8BA120087645A /* profile.swift in Sources */,
@@ -466,6 +476,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F5AC437A2A048C2000E8B053 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		F5AC437D2A04B37D00E8B053 /* XCRemoteSwiftPackageReference "stream-chat-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/GetStream/stream-chat-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = F52D611C29C46C6F00ECE8A7 /* Project object */;
 }

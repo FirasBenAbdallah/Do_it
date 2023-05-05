@@ -36,7 +36,7 @@ class ViewController: UIViewController {
         let password = passwordTextField.text!
         
         
-        let url = URL(string: "http://172.17.4.2:3000/login")!
+        let url = URL(string: "http://172.17.11.114:3000/login")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
