@@ -11,6 +11,11 @@ import LocalAuthentication
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var forgotpss: UIButton!
+    @IBOutlet weak var lbaccount: UILabel!
+    @IBOutlet weak var signup: UIButton!
+    @IBOutlet weak var lbremember: UILabel!
+    
     
     @IBOutlet var emailTextField: FormTextField!
     @IBOutlet var passwordTextField: FormTextField!
@@ -30,13 +35,14 @@ class ViewController: UIViewController {
         // update the button image to show/hide the password
     }
     
+    @IBOutlet weak var loginlg: UIButton!
     
     @IBAction func login(_ sender: UIButton) {
         let phone = emailTextField.text!
         let password = passwordTextField.text!
         
         
-        let url = URL(string: "http://172.17.11.114:3000/login")!
+        let url = URL(string: "http://172.17.6.45:3000/login")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -127,6 +133,13 @@ class ViewController: UIViewController {
         
         self.CheckAndAdd()
         
+        lbaccount.text = NSLocalizedString("Don't have an account?", comment: "login")
+        lbremember.text = NSLocalizedString("Remember me", comment: "Remember me")
+        loginlg.setTitle(NSLocalizedString("LOGIN", comment: ""), for: .normal)
+        forgotpss.setTitle(NSLocalizedString("Forgot Password ?", comment: ""), for: .normal)
+        signup.setTitle(NSLocalizedString("Sign Up", comment: "signup"), for: .normal)
+        emailTextField.placeholder = NSLocalizedString("Phone number", comment: "phone")
+        passwordTextField.placeholder = NSLocalizedString("Password", comment: "phone")
     }
     
     @IBAction func checkboxPressed(_ sender: Any) {

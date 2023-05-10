@@ -1,0 +1,114 @@
+
+/* Class = "UITextField"; placeholder = "Address"; ObjectID = "24W-iz-Nec"; */
+"24W-iz-Nec.placeholder" = "Address";
+
+/* Class = "UITextField"; placeholder = "Confirm New Password"; ObjectID = "2Te-qu-5cJ"; */
+"2Te-qu-5cJ.placeholder" = "Confirm New Password";
+
+/* Class = "UITextField"; placeholder = "E-mail"; ObjectID = "2eI-Wd-Nzl"; */
+"2eI-Wd-Nzl.placeholder" = "E-mail";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "38w-4x-uFS"; */
+"38w-4x-uFS.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "LOGIN"; ObjectID = "3f4-bo-fZb"; */
+"3f4-bo-fZb.configuration.title" = "LOGIN";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "3f4-bo-fZb"; */
+"3f4-bo-fZb.normalTitle" = "Button";
+
+/* Class = "UITextField"; placeholder = "E-mail"; ObjectID = "7sf-3V-HXG"; */
+"7sf-3V-HXG.placeholder" = "E-mail";
+
+/* Class = "UIButton"; normalTitle = "Forgot Password ?"; ObjectID = "DWo-Vw-NQb"; */
+"DWo-Vw-NQb.normalTitle" = "Forgot Password ?";
+
+/* Class = "UILabel"; text = "Remember me"; ObjectID = "GOk-bO-AJf"; */
+"GOk-bO-AJf.text" = "Remember me";
+
+/* Class = "UILabel"; text = "Change Your Password"; ObjectID = "Gtu-S2-dco"; */
+"Gtu-S2-dco.text" = "Change Your Password";
+
+/* Class = "UITextField"; placeholder = "Confirm Password"; ObjectID = "GzR-yq-7xD"; */
+"GzR-yq-7xD.placeholder" = "Confirm Password";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "N0W-Fi-Iom"; */
+"N0W-Fi-Iom.placeholder" = "Password";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "NyE-9m-o5c"; */
+"NyE-9m-o5c.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "do it !"; ObjectID = "OVB-Ft-T9c"; */
+"OVB-Ft-T9c.text" = "do it !";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Obs-4Q-TX1"; */
+"Obs-4Q-TX1.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Don't have an account?"; ObjectID = "Org-Jp-rwb"; */
+"Org-Jp-rwb.text" = "Don't have an account?";
+
+/* Class = "UILabel"; text = "Change Your Password"; ObjectID = "Qav-ZN-Hn0"; */
+"Qav-ZN-Hn0.text" = "Change Your Password";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "SXA-QS-hDa"; */
+"SXA-QS-hDa.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Txa-7x-VbV"; */
+"Txa-7x-VbV.normalTitle" = "Button";
+
+/* Class = "UITextField"; placeholder = "JJ/MM/AAAA"; ObjectID = "UWE-ko-Umu"; */
+"UWE-ko-Umu.placeholder" = "JJ/MM/AAAA";
+
+/* Class = "UIButton"; configuration.title = "SIGN UP"; ObjectID = "W0e-uQ-mW3"; */
+"W0e-uQ-mW3.configuration.title" = "SIGN UP";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "W0e-uQ-mW3"; */
+"W0e-uQ-mW3.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "do it !"; ObjectID = "XmH-vw-tSg"; */
+"XmH-vw-tSg.text" = "do it !";
+
+/* Class = "UITextField"; placeholder = "New Password"; ObjectID = "a4F-ZK-EY5"; */
+"a4F-ZK-EY5.placeholder" = "New Password";
+
+/* Class = "UITextField"; placeholder = "Full Name"; ObjectID = "c1Y-bP-o4T"; */
+"c1Y-bP-o4T.placeholder" = "Full Name";
+
+/* Class = "UIButton"; configuration.title = "SEND CODE"; ObjectID = "cgr-Rj-42U"; */
+"cgr-Rj-42U.configuration.title" = "SEND CODE";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "cgr-Rj-42U"; */
+"cgr-Rj-42U.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "dao-8I-OgP"; */
+"dao-8I-OgP.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "CONFIRM"; ObjectID = "dkx-j9-UfW"; */
+"dkx-j9-UfW.configuration.title" = "CONFIRM";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "dkx-j9-UfW"; */
+"dkx-j9-UfW.normalTitle" = "Button";
+
+/* Class = "UITextField"; placeholder = "Phone number"; ObjectID = "hd7-r7-5Yt"; */
+"hd7-r7-5Yt.placeholder" = "Phone number";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "iNU-m5-rL3"; */
+"iNU-m5-rL3.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "k8V-r4-Sb7"; */
+"k8V-r4-Sb7.normalTitle" = "Button";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "kVJ-Ke-i9w"; */
+"kVJ-Ke-i9w.placeholder" = "Password";
+
+/* Class = "UIButton"; configuration.title = "Sign Up"; ObjectID = "mc7-fQ-AmQ"; */
+"mc7-fQ-AmQ.configuration.title" = "Sign Up";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "mc7-fQ-AmQ"; */
+"mc7-fQ-AmQ.normalTitle" = "Button";
+
+/* Class = "UITextField"; placeholder = "Code"; ObjectID = "psd-iY-1J2"; */
+"psd-iY-1J2.placeholder" = "Code";
+
+/* Class = "UITextField"; placeholder = "Phone number"; ObjectID = "qE2-SE-Adl"; */
+"qE2-SE-Adl.placeholder" = "Phone number";

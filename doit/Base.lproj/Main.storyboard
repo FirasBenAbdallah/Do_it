@@ -20,7 +20,7 @@
             <objects>
                 <viewController storyboardIdentifier="Home" modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="ViewController" customModule="doit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="Vi">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="do it !" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OVB-Ft-T9c">
@@ -67,8 +67,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DWo-Vw-NQb">
-                                <rect key="frame" x="234" y="425" width="110" height="23"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DWo-Vw-NQb">
+                                <rect key="frame" x="215" y="425" width="129" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="tintColor" systemColor="systemGrayColor"/>
@@ -80,15 +80,15 @@
                                     <segue destination="x69-3t-Qdp" kind="show" id="MTz-v0-Ycf"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Don't have an account?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Org-Jp-rwb">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Don't have an account?" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Org-Jp-rwb">
                                 <rect key="frame" x="77" y="610" width="164" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" systemColor="systemGrayColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mc7-fQ-AmQ">
-                                <rect key="frame" x="236" y="604" width="80" height="33"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mc7-fQ-AmQ">
+                                <rect key="frame" x="236" y="604" width="108" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.5450980392" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
@@ -140,7 +140,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Remember me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GOk-bO-AJf">
-                                <rect key="frame" x="77" y="429" width="82" height="15"/>
+                                <rect key="frame" x="77" y="429" width="108" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" systemColor="systemGrayColor"/>
@@ -165,7 +165,12 @@
                         <outlet property="checkbox" destination="SXA-QS-hDa" id="4yp-Cs-UTq"/>
                         <outlet property="emailTextField" destination="hd7-r7-5Yt" id="OwH-De-biW"/>
                         <outlet property="faceIDButton" destination="NyE-9m-o5c" id="YcZ-ev-Qi5"/>
+                        <outlet property="forgotpss" destination="DWo-Vw-NQb" id="7O0-28-gY4"/>
+                        <outlet property="lbaccount" destination="Org-Jp-rwb" id="jh8-xi-6Mz"/>
+                        <outlet property="lbremember" destination="GOk-bO-AJf" id="N2t-hf-YEd"/>
+                        <outlet property="loginlg" destination="3f4-bo-fZb" id="PJZ-Jn-Vvg"/>
                         <outlet property="passwordTextField" destination="N0W-Fi-Iom" id="uts-G9-hyd"/>
+                        <outlet property="signup" destination="mc7-fQ-AmQ" id="Ef6-jq-qZ7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -200,13 +205,13 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cgr-Rj-42U">
-                                <rect key="frame" x="240" y="488" width="104" height="31"/>
+                                <rect key="frame" x="187" y="488" width="157" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.47450980390000003" green="0.38431372549999998" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="SEND CODE">
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="11"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="sendCode:" destination="WhQ-wy-dza" eventType="touchUpInside" id="Nbg-Ux-yFE"/>
@@ -214,7 +219,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Change Your Password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qav-ZN-Hn0">
-                                <rect key="frame" x="103" y="327" width="186" height="22"/>
+                                <rect key="frame" x="76" y="326" width="240" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
                                 <color key="textColor" red="0.47450980390000003" green="0.38431372549999998" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -227,12 +232,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="nfg-z1-zyy"/>
                     <connections>
+                        <outlet property="changepass" destination="Qav-ZN-Hn0" id="TfF-iQ-DBm"/>
                         <outlet property="emailTextField" destination="7sf-3V-HXG" id="YLR-Sc-3QW"/>
+                        <outlet property="sendcode" destination="cgr-Rj-42U" id="iLB-Hl-vaG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E86-V6-Yz6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="807" y="27"/>
+            <point key="canvasLocation" x="806.87022900763361" y="26.760563380281692"/>
         </scene>
         <!--Reset Pass-->
         <scene sceneID="Owf-js-Iig">
@@ -300,7 +307,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dkx-j9-UfW">
-                                <rect key="frame" x="248" y="568" width="88" height="31"/>
+                                <rect key="frame" x="211" y="568" width="125" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.47450980390000003" green="0.38431372549999998" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -313,13 +320,6 @@
                                     <segue destination="BYZ-38-t0r" kind="showDetail" id="Lik-C7-iwJ"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Change Your Password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gtu-S2-dco">
-                                <rect key="frame" x="103" y="262" width="186" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
-                                <color key="textColor" red="0.47450980390000003" green="0.38431372549999998" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Txa-7x-VbV">
                                 <rect key="frame" x="352" y="409" width="34" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -346,6 +346,13 @@
                                     <action selector="showHidePassword:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tzB-VR-0w9"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Change Your Password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gtu-S2-dco">
+                                <rect key="frame" x="76" y="263" width="240" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
+                                <color key="textColor" red="0.47450980390000003" green="0.38431372549999998" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1Bz-do-gZ8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -354,19 +361,21 @@
                     <connections>
                         <outlet property="code" destination="psd-iY-1J2" id="CpR-4a-eOd"/>
                         <outlet property="conf" destination="2Te-qu-5cJ" id="hRF-Kg-jzk"/>
+                        <outlet property="confirm" destination="dkx-j9-UfW" id="0bi-JK-bLb"/>
+                        <outlet property="lbchangepass" destination="Gtu-S2-dco" id="4Lt-tY-8bA"/>
                         <outlet property="newpass" destination="a4F-ZK-EY5" id="phl-wI-ATs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fa6-yy-i3g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2482" y="27"/>
+            <point key="canvasLocation" x="2481.679389312977" y="26.760563380281692"/>
         </scene>
         <!--Sign Up-->
         <scene sceneID="CSL-RE-Bfn">
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="QbG-ip-SfQ" customClass="SignUp" customModule="doit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MSS-DJ-OBw">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Full Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="c1Y-bP-o4T" customClass="FormTextField" customModule="doit" customModuleProvider="target">
@@ -684,7 +693,7 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="tCg-bB-LAf"/>
+        <segue reference="Lik-C7-iwJ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="eye" catalog="system" width="128" height="79"/>

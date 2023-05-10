@@ -12,6 +12,8 @@ class ResetPass: UIViewController {
     @IBOutlet var conf: FormTextField!
     @IBOutlet var newpass: FormTextField!
     @IBOutlet var code: FormTextField!
+    @IBOutlet weak var confirm: UIButton!
+    @IBOutlet weak var lbchangepass: UILabel!
     
     
     @IBAction func showHidePassword(_ sender: UIButton) {
@@ -98,6 +100,13 @@ class ResetPass: UIViewController {
         let backButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backButtonTapped))
         navigationItem.leftBarButtonItem = backButton
         // Do any additional setup after loading the view.
+        
+        lbchangepass.text = NSLocalizedString("Change Your Password", comment: "change pass")
+        code.placeholder = NSLocalizedString("Code", comment:"code")
+        newpass.placeholder = NSLocalizedString("New Password", comment:"new pass")
+        conf.placeholder = NSLocalizedString("Confirm New Password", comment:"conf pass")
+        confirm.setTitle(NSLocalizedString("CONFIRM", comment: "confirm"), for: .normal)
+        
     }
     
 

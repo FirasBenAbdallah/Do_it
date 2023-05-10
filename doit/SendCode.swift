@@ -9,6 +9,8 @@ import UIKit
 
 class SendCode: UIViewController {
 
+    @IBOutlet weak var sendcode: UIButton!
+    @IBOutlet weak var changepass: UILabel!
     @IBOutlet weak var emailTextField: FormTextField!
     
     @IBAction func sendCode(_ sender: UIButton) {
@@ -67,6 +69,10 @@ class SendCode: UIViewController {
         super.viewDidLoad()
         let backButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backButtonTapped))
         navigationItem.leftBarButtonItem = backButton
+        
+        changepass.text = NSLocalizedString("Change Your Password", comment:"login")
+        sendcode.setTitle(NSLocalizedString("SEND CODE", comment: ""), for: .normal)
+        emailTextField.placeholder = NSLocalizedString("E-mail", comment: "E-mail")
 
         // Do any additional setup after loading the view.
     }

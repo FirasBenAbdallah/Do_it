@@ -1,0 +1,21 @@
+// Login
+"Phone number"="Numéro de téléphone";
+"Password"="Mot de passe";
+"Remember me"="Se souvenir de moi";
+"Forgot Password ?"="Mot de passe oublié ?";
+"LOGIN"="CONNEXION";
+"Sign Up"="S'inscrire";
+"Don't have an account?"="Pas de compte ?";
+
+//Forgot Pass
+"SEND CODE"="ENVOYER CODE";
+"E-mail"="E-mail";
+"Change Your Password"="Changez votre mot de passe";
+
+//Change Password
+"Change Your Password"="Changez votre mot de passe";
+"Code"="Code";
+"New Password"="Nouveau mot de passe" ;
+"Confirm New Password"="Confirmer le nouveau mot de passe";
+"CONFIRM"="CONFIRMER";
+

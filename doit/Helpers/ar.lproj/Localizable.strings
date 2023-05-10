@@ -1,0 +1,21 @@
+// Login
+"Phone number"="رقم الهاتف";
+
+"Password"="كلمة المرور";
+"Remember me"="تذكرني";
+"Forgot Password ?"="هل نسيت كلمة المرور؟";
+"LOGIN"="تسجيل الدخول";
+"Sign Up"="تسجيل";
+"Don't have an account?"="ليس لديك حساب؟";
+
+//Forgot password
+"SEND CODE"="إرسال الرمز";
+"E-mail"="البريد الإلكتروني";
+"Change Your Password"="تغيير كلمة المرور";
+
+//Change Password
+"Change Your Password"="تغيير كلمة المرور";
+"Code"="الرمز";
+"New Password"="كلمة المرور الجديدة";
+"Confirm New Password"="تأكيد كلمة المرور الجديدة";
+"CONFIRM"="تأكيد";
