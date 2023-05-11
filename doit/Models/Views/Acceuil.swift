@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct Acceuil: View {
+    
     @State private var isMenuOpen = false
+    @State var results = [TaskEntry]()
+
     var body: some View {
-        VStack{
             NavigationView {
                 ZStack {
                    Color("Background")
@@ -69,6 +71,7 @@ struct Acceuil: View {
                         .transition(.move(edge: .leading))
                         .zIndex(1)
                     }
+            
                     /*NavigationView {
                                 List {
                                     ForEach(publications) { publication in
@@ -126,63 +129,130 @@ struct Acceuil: View {
 
             }
             .navigationViewStyle(StackNavigationViewStyle())
-            
-            Button(action: {
-                getuser()
-            }, label: {
-                Label("getuser", systemImage: "power")
-                    .font(.headline)
-                    .background(.black)
-                    .foregroundColor(.white)
-            }).padding()
-        }
-        
+
+        VStack {
+            List {
+                ForEach(title, id: \.self) { title in
+                    VStack(alignment: .leading) {
+                        Text(title).foregroundColor(.yellow)
+                    }
+                }
+            }
+        }.onAppear(perform: getGuests)
     }
-}
-
-func getuser() {
-        // Set the URL of your Node.js server
-        guard let url = URL(string: "http://172.17.6.45:3000/getOneUser") else { return }
-
     
-        // Set the parameters of your request
-    let params = ["phone":savedPhone]
-        guard let body = try? JSONSerialization.data(withJSONObject: params) else { return }
-
-        // Create the request and set the HTTP method to POST
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.httpBody = body
-
-        // Set the content type of the request to JSON
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-
-        // Send the request using URLSession
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            if let error = error {
-                print("Error: \(error.localizedDescription)")
-                return
+    func getGuests() {
+        fetchGuest() { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let events):
+                    self.results = events
+                    print("Events: \(events)")
+                    print("Results: \(self.results)")
+                case .failure(_):
+                    return
+                }
             }
+        }
+    }
 
-            // Check the status code of the response
-            guard let httpResponse = response as? HTTPURLResponse else {
-                print("Invalid response")
-                return
-            }
+    func fetchGuest(completion: @escaping(Result<[TaskEntry],APIError>) -> Void) {
+        let url = URL(string : "http://172.17.6.45:3000/getevent")
+        fetch2(type: [TaskEntry].self, url: url, completion: completion)
+    }
+    @State private var title: [String] = []
 
-            if (200...201).contains(httpResponse.statusCode) {
-                // Success: handle the response data here
-                print("User")
-            
-            } else {
-                // Error: handle the response error here
-                print("Error: \(httpResponse.statusCode)")
+    func fetch2<T: Decodable>(type: T.Type, url: URL?, completion: @escaping(Result<T,APIError>) -> Void) {
+        guard let url = url else {
+            let error = APIError.badURL
+            completion(Result.failure(error))
+            return
+        }
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error = error as? URLError {
+                completion(Result.failure(APIError.urlSession(error)))
+            } else if let response = response as? HTTPURLResponse, !(200...299).contains(response.statusCode) {
+                completion(Result.failure(APIError.badResponse(response.statusCode)))
+            } else if let data = data {
+                let jsonString = String(data: data, encoding: .utf8)
+                let jsonData = jsonString?.data(using: .utf8)!
+
+                do {
+                    let jsonObject = try JSONSerialization.jsonObject(with: jsonData!, options: [])
+                    if let dictionary = jsonObject as? [String: Any] {
+                        if let eventsArray = dictionary["events"] as? [[String: Any]] {
+                            for event in eventsArray {
+                                if let eventName = event["name"] as? String {
+                                    title.append(eventName)
+                                    print(eventName)
+                                }
+                            }
+                        }
+                    }
+                } catch let error {
+                    print("Error parsing JSON: \(error.localizedDescription)")
+                }
+                do {
+                    let result = try JSONDecoder().decode(type, from: data)
+                    completion(Result.success(result))
+                } catch {
+                    completion(Result.failure(.decoding(error as? DecodingError)))
+                }
             }
         }.resume()
     }
+
+    
+}
+
+
+enum APIError: Error, CustomStringConvertible {
+    
+    case badURL
+    case urlSession(URLError?)
+    case badResponse(Int)
+    case decoding(DecodingError?)
+    case unknown
+    
+    var description: String {
+        switch self {
+            case .badURL:
+                return "badURL"
+            case .urlSession(let error):
+                return "urlSession error: \(error.debugDescription)"
+            case .badResponse(let statusCode):
+                return "bad response with status code: \(statusCode)"
+            case .decoding(let decodingError):
+                return "decoding error: \(decodingError)"
+            case .unknown:
+                return "unknown error"
+        }
+    }
+    
+    var localizedDescription: String {
+        switch self {
+            case .badURL, .unknown:
+               return "something went wrong"
+            case .urlSession(let urlError):
+                return urlError?.localizedDescription ?? "something went wrong"
+            case .badResponse(_):
+                return "something went wrong"
+            case .decoding(let decodingError):
+                return decodingError?.localizedDescription ?? "something went wrong"
+        }
+    }
+}
 
 struct Acceuil_Previews: PreviewProvider {
     static var previews: some View {
         Acceuil()
     }
 }
+
+
+
+
+
+   
+
+
