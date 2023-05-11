@@ -28,6 +28,10 @@
 
 "Back"="العودة";
 
+//Acceuil
+"About"="حول";
+"John Doe"="جون دو";
+
 //Profil swifui
 "Help"="مساعدة";
 "Setting"="الإعدادات";

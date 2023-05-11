@@ -95,7 +95,6 @@ struct Profile: View {
                                 }
                             }
                             .pickerStyle(MenuPickerStyle())
-
                             Button("Apply") {
                                 UserDefaults.standard.setValue([selectedLanguage], forKey: "AppleLanguages")
                                 exit(0)

@@ -37,7 +37,7 @@ struct Acceuil: View {
                             NavigationLink(
                                 destination: Text("Settings"),
                                 label: {
-                                    Label("Settings", systemImage: "gear")
+                                    Label("Setting", systemImage: "gear")
                                         .font(.headline)
                                         .foregroundColor(.white)
                                 }

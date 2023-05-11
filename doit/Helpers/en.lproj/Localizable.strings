@@ -25,6 +25,9 @@
 "Full Name"="Full Name";
 "Address"="Address";
 
+//Acceuil
+"About"="About";
+"John Doe"="John Doe";
 
 //Profil swifui
 "Help"="Help";

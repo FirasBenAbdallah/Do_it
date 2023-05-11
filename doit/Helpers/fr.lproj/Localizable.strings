@@ -25,6 +25,10 @@
 "Full Name"="Nom complet";
 "Address"="Adresse";
 
+//Acceuil
+"About"="À propos";
+"John Doe"="John Doe";
+
 //Profile SwiftUI
 "Help"="Aide";
 "Setting"="Parametre";

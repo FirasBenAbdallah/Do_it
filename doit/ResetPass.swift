@@ -44,7 +44,7 @@ class ResetPass: UIViewController {
         let newpass = newpass.text!
         let conf = conf.text!
         
-        let url = URL(string: "http://172.17.11.114:3000/resetPassword")!
+        let url = URL(string: "http://172.17.6.45:3000/resetPassword")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
