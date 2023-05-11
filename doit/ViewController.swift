@@ -152,13 +152,20 @@ class ViewController: UIViewController {
         }
     }
     
+    func sendMailToAnotherFile(_ password: String) {
+        // Call a function in the other file and pass the password as a parameter
+        Profile.processPassword(password)
+    }
+    
     @IBAction func saveRememberTapped(_ sender: Any) {
         if(isChecked == true) {
                UserDefaults.standard.set("1", forKey: "rememberMe")
-               UserDefaults.standard.set(emailTextField.text ?? "" , forKey: "userMail")
+                UserDefaults.standard.set(emailTextField.text ?? "" , forKey: "userMail")
                UserDefaults.standard.set(passwordTextField.text ?? "", forKey: "userPassword")
                print("Mail & Password Saved Successfully")
-                
+            let mail = UserDefaults.standard.value(forKey: "userMail") as? String ?? ""
+            print("Saved password: \(mail)")
+            sendMailToAnotherFile(mail)
                }else{
                    UserDefaults.standard.set("2", forKey: "rememberMe")
                }

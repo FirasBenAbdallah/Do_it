@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+var savedPhone: String?
 struct Profile: View {
     @State private var isDarkModeEnabled = false
     @State private var isShareSheetShowing = false
@@ -108,10 +109,12 @@ struct Profile: View {
                         }
                 
                 Button(action: {
-                    //let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    //let viewController = storyboard.instantiateViewController(withIdentifier: "Home")
-                    //UIApplication.shared.windows.first?.rootViewController?.present(viewController, animated: true, completion: nil)
-                    logout()
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "Home")
+                    UIApplication.shared.windows.first?.rootViewController = viewController
+                    //logout()
+
+                    
                 }, label: {
                     Label("LogOut", systemImage: "power")
                         .font(.headline)
@@ -120,15 +123,20 @@ struct Profile: View {
             }.navigationTitle("Profil")
         }
     }
+    static func processPassword(_ password: String) {
+            // Do something with the password here
+            savedPhone = password
+            print("Received password: \(password)")
+        }
 }
-func logout() {
+/*func logout() {
         // Set the URL of your Node.js server
         guard let url = URL(string: "http://172.17.6.45:3000/logout") else { return }
 
     
         // Set the parameters of your request
-    //let params = []
-        guard let body = try? JSONSerialization.data(withJSONObject: "") else { return }
+    let params = ["phone":savedPhone]
+        guard let body = try? JSONSerialization.data(withJSONObject: params) else { return }
 
         // Create the request and set the HTTP method to POST
         var request = URLRequest(url: url)
@@ -154,16 +162,21 @@ func logout() {
             if (200...201).contains(httpResponse.statusCode) {
                 // Success: handle the response data here
                 print("Logout")
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Home")
-                UIApplication.shared.windows.first?.rootViewController?.present(viewController, animated: true, completion: nil)
+                DispatchQueue.main.async {
+                    // update the user interface here
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "Home")
+                    UIApplication.shared.windows.first?.rootViewController = viewController
+                    //.present(viewController, animated: true, completion: nil)
+                }
+                
             } else {
                 // Error: handle the response error here
                 print("Error: \(httpResponse.statusCode)")
             }
         }.resume()
     }
-
+*/
 struct Profile_Previews: PreviewProvider {
     static var previews: some View {
         Profile()
