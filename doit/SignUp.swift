@@ -9,6 +9,7 @@ import UIKit
 
 class SignUp: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    @IBOutlet weak var signup: UIButton!
     @IBOutlet weak var imageView: UIImageView!
     @IBAction func chooseImage(_ sender: UIButton) {
         let imagePicker = UIImagePickerController()
@@ -129,6 +130,14 @@ class SignUp: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         let backButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backButtonTapped))
         navigationItem.leftBarButtonItem = backButton
         createDatePicker()
+        
+        phone.placeholder = NSLocalizedString("Phone number", comment: "phone")
+        email.placeholder = NSLocalizedString("E-mail", comment: "mail")
+        password.placeholder = NSLocalizedString("Password", comment: "pass")
+        confpass.placeholder = NSLocalizedString("Confirm Password", comment: "confpass")
+        fullname.placeholder = NSLocalizedString("Full Name", comment: "fullname")
+        address.placeholder = NSLocalizedString("Address", comment: "address")
+        signup.setTitle(NSLocalizedString("SIGN UP", comment: "signup"), for: .normal)
     }
     
     func createDatePicker() {

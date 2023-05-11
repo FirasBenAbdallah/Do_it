@@ -22,16 +22,28 @@ struct Profile: View {
     var body: some View {
         NavigationView {
             List {
-                Section(header: Text("Informations personnelles")) {
-                    ProfileRow(title: "Photo de profil", imageName: "profile")
-                    ProfileRow(title: "Photo de couverture", imageName: "cover")
+                Section(header: Text("Personal information")) {
+                    HStack {
+                        Text("Profile picture")
+                            .foregroundColor(Color.black)
+                        Spacer()
+                        Image(systemName: "arrow.right")
+                            .foregroundColor(Color.black)
+                    }
+                    HStack {
+                        Text("Cover picture")
+                            .foregroundColor(Color.black)
+                        Spacer()
+                        Image(systemName: "arrow.right")
+                            .foregroundColor(Color.black)
+                    }
                     Button(action: {
                         showShareSheet()
                     })
                     {
                         HStack {
                             Text("Setting")
-                                .foregroundColor(Color.black)
+                                //.foregroundColor(Color.black)
                             Spacer()
                             Image(systemName: "arrow.right")
                                 .foregroundColor(Color.black)
@@ -40,10 +52,15 @@ struct Profile: View {
                         ShareSheet(activityItems: ["I just achieved my goal!"], applicationActivities: nil)
                     }
                 }
-                Section(header: Text("Autres")) {
-                    ProfileRow(title: "Aide", imageName: "questionmark.circle")
-                 //   ProfileRow(title: "Déconnexion", imageName: "arrow.right.square")
-                    Toggle("Mode sombre", isOn: $isDarkModeEnabled)
+                Section(header: Text("Other")) {
+                    HStack {
+                        Text("Help")
+                            //.foregroundColor(Color.black)
+                        Spacer()
+                        Image(systemName: "arrow.right")
+                            .foregroundColor(Color.black)
+                    }
+                    Toggle("Dark Mode", isOn: $isDarkModeEnabled)
                         .onChange(of: isDarkModeEnabled) { newValue in
                             if newValue {
                                 UIApplication.shared.connectedScenes
@@ -59,40 +76,17 @@ struct Profile: View {
                                     .overrideUserInterfaceStyle = .light
                             }
                         }
-                    NavigationLink(destination: LanguageView()) {
-                        ProfileRow(title: "Langues", imageName: "globe")
-                        
-                    }
-                    
                     NavigationLink(destination: AboutView()) {
-                        ProfileRow(title: "Rate us", imageName: "star")
-                        
+                        HStack {
+                            Text("Rate us")
+                                .foregroundColor(Color.black)
+                            Spacer()
+                            //Image(systemName: "arrow.right")
+                                //.foregroundColor(Color.black)
+                        }
                     }
                     
                 }
-                /*Button("Change Language") {
-                    let currentLang = Locale.current.language.languageCode?.identifier
-                            print("current Lang: \(currentLang ?? "")")
-                            let newLanguage = currentLang == "en" ? "fr" : "en"
-                            UserDefaults.standard.setValue([newLanguage], forKey: "AppleLanguages")
-                            exit(0)
-                        }*/
-                /*Button("Change Language") {
-                    var newLanguage = "en"
-                    switch Locale.current.language.languageCode?.identifier {
-                    case "en":
-                        newLanguage = "fr"
-                    case "fr":
-                        newLanguage = "ar"
-                    case "ar":
-                        newLanguage = "en"
-                    default:
-                        break
-                    }
-                    
-                    UserDefaults.standard.setValue([newLanguage], forKey: "AppleLanguages")
-                    exit(0)
-                }*/
                 VStack {
                             //Text("")
                             Picker(selection: $selectedLanguage, label: Text("Select a language:")) {
@@ -120,13 +114,13 @@ struct Profile: View {
                         .font(.headline)
                         .foregroundColor(.black)
                 })
-            }.navigationTitle("Profil")
+            }.navigationTitle("Profile")
         }
     }
     static func processPassword(_ password: String) {
             // Do something with the password here
             savedPhone = password
-            print("Received password: \(password)")
+            //print("Received password: \(password)")
         }
 }
 /*func logout() {

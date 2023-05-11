@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct Acceuil: View {
-    
+    @State private var title: [String] = []
     @State private var isMenuOpen = false
     @State var results = [TaskEntry]()
 
@@ -44,7 +44,7 @@ struct Acceuil: View {
                             )
                             
                             NavigationLink(
-                                destination: Text("About"),
+                                destination: AboutView(),
                                 label: {
                                     Label("About", systemImage: "info.circle")
                                         .font(.headline)
@@ -71,6 +71,15 @@ struct Acceuil: View {
                         .transition(.move(edge: .leading))
                         .zIndex(1)
                     }
+                    VStack {
+                        List {
+                            ForEach(title, id: \.self) { title in
+                                VStack(alignment: .leading) {
+                                    Text(title).foregroundColor(.black)
+                                }
+                            }
+                        }
+                    }.onAppear(perform: getGuests)
             
                     /*NavigationView {
                                 List {
@@ -129,19 +138,10 @@ struct Acceuil: View {
 
             }
             .navigationViewStyle(StackNavigationViewStyle())
-
-        VStack {
-            List {
-                ForEach(title, id: \.self) { title in
-                    VStack(alignment: .leading) {
-                        Text(title).foregroundColor(.yellow)
-                    }
-                }
-            }
-        }.onAppear(perform: getGuests)
     }
     
     func getGuests() {
+        title = []
         fetchGuest() { result in
             DispatchQueue.main.async {
                 switch result {
@@ -160,7 +160,7 @@ struct Acceuil: View {
         let url = URL(string : "http://172.17.6.45:3000/getevent")
         fetch2(type: [TaskEntry].self, url: url, completion: completion)
     }
-    @State private var title: [String] = []
+    
 
     func fetch2<T: Decodable>(type: T.Type, url: URL?, completion: @escaping(Result<T,APIError>) -> Void) {
         guard let url = url else {
@@ -182,9 +182,9 @@ struct Acceuil: View {
                     if let dictionary = jsonObject as? [String: Any] {
                         if let eventsArray = dictionary["events"] as? [[String: Any]] {
                             for event in eventsArray {
-                                if let eventName = event["name"] as? String {
-                                    title.append(eventName)
-                                    print(eventName)
+                                if let eventName = event["name"] as? String, let eventAddress = event["address"] as? String, let eventDescription = event["description"] as? String, let eventStart = event["start"] as? String, let eventEnd = event["end"] as? String {
+                                    let eventTitle = "\(eventName) - \(eventAddress) - \(eventDescription) \n\(eventStart) - \(eventEnd)"
+                                    title.append(eventTitle)
                                 }
                             }
                         }

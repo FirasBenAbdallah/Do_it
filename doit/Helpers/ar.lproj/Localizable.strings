@@ -19,3 +19,32 @@
 "New Password"="كلمة المرور الجديدة";
 "Confirm New Password"="تأكيد كلمة المرور الجديدة";
 "CONFIRM"="تأكيد";
+
+//Signup
+"SIGN UP" = "التسجيل";
+"Confirm Password" = "تأكيد كلمة المرور";
+"Full Name" = "الاسم الكامل";
+"Address" = "العنوان";
+
+"Back"="العودة";
+
+//Profil swifui
+"Help"="مساعدة";
+"Setting"="الإعدادات";
+"Select a language:"="حدد اللغة:";
+"Dark Mode"="الوضع الليلي";
+"Other"="آخر";
+"Rate us"="تقييمنا";
+"Apply"="تطبيق";
+"Profile picture"="صورة الملف الشخصي";
+"Cover picture"="صورة الغلاف";
+"LogOut" = "تسجيل الخروج";
+"Personal information"="معلومات شخصية";
+
+//ContentView
+"Home"="الصفحة الرئيسية";
+"Search"="بحث";
+"Map"="الخريطة";
+"Add"="إضافة";
+"Chat"="الدردشة";
+"Profile"="الملف الشخصي";

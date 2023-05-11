@@ -18,3 +18,31 @@
 "New Password"="New Password";
 "Confirm New Password"="Confirm New Password";
 "CONFIRM"="CONFIRM";
+
+//Signup
+"SIGN UP"="SIGN UP";
+"Confirm Password"="Confirm Password";
+"Full Name"="Full Name";
+"Address"="Address";
+
+
+//Profil swifui
+"Help"="Help";
+"Setting"="Setting";
+"Select a language:"="Select a language:";
+"Dark Mode"="Dark Mode";
+"Other"="Other";
+"Rate us"="Rate us";
+"Apply"="Apply";
+"Profile picture"="Profile picture";
+"Cover picture"="Cover picture";
+"LogOut"="LogOut";
+"Personal information"="Personal information";
+
+//ContentView
+"Home"="Home";
+"Search"="Search";
+"Map"="Map";
+"Add"="Add";
+"Chat"="Chat";
+"Profile"="Profile";

@@ -11,6 +11,7 @@ import LocalAuthentication
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var back: UINavigationItem!
     @IBOutlet weak var forgotpss: UIButton!
     @IBOutlet weak var lbaccount: UILabel!
     @IBOutlet weak var signup: UIButton!
@@ -135,11 +136,12 @@ class ViewController: UIViewController {
         
         lbaccount.text = NSLocalizedString("Don't have an account?", comment: "login")
         lbremember.text = NSLocalizedString("Remember me", comment: "Remember me")
+        
         loginlg.setTitle(NSLocalizedString("LOGIN", comment: ""), for: .normal)
         forgotpss.setTitle(NSLocalizedString("Forgot Password ?", comment: ""), for: .normal)
         signup.setTitle(NSLocalizedString("Sign Up", comment: "signup"), for: .normal)
-        emailTextField.placeholder = NSLocalizedString("Phone number", comment: "phone")
-        passwordTextField.placeholder = NSLocalizedString("Password", comment: "phone")
+        emailTextField.placeholder = NSLocalizedString("Phone number", comment: "email")
+        passwordTextField.placeholder = NSLocalizedString("Password", comment: "pass")
     }
     
     @IBAction func checkboxPressed(_ sender: Any) {
@@ -164,7 +166,7 @@ class ViewController: UIViewController {
                UserDefaults.standard.set(passwordTextField.text ?? "", forKey: "userPassword")
                print("Mail & Password Saved Successfully")
             let mail = UserDefaults.standard.value(forKey: "userMail") as? String ?? ""
-            print("Saved password: \(mail)")
+            //print("Saved password: \(mail)")
             sendMailToAnotherFile(mail)
                }else{
                    UserDefaults.standard.set("2", forKey: "rememberMe")

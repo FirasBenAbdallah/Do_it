@@ -19,3 +19,29 @@
 "Confirm New Password"="Confirmer le nouveau mot de passe";
 "CONFIRM"="CONFIRMER";
 
+//Signup
+"SIGN UP"="S'INSCRIRE";
+"Confirm Password"="Confirmer le mot de passe";
+"Full Name"="Nom complet";
+"Address"="Adresse";
+
+//Profile SwiftUI
+"Help"="Aide";
+"Setting"="Parametre";
+"Select a language:"="Sélectionnez une langue:";
+"Dark Mode"="Mode sombre";
+"Other"="Autres";
+"Rate us"="Évaluez nous";
+"Apply"="Appliquer";
+"Profile picture"="Image de profil";
+"Cover picture"="Photo de couverture";
+"LogOut" = "Déconnexion";
+"Personal information"="Informations personnelles";
+
+//ContentView
+"Home"="Accueil";
+"Search"="Recherche";
+"Map"="Carte";
+"Add"="Ajouter";
+"Chat"="Chat";
+"Profile"="Profil";
