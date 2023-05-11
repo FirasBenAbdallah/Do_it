@@ -16,7 +16,7 @@ struct Acceuil: View {
             NavigationView {
                 ZStack {
                    Color("Background")
-                        .edgesIgnoringSafeArea(.all).toolbarBackground(Color.blue, for: .navigationBar)
+                        .edgesIgnoringSafeArea(.all).toolbarBackground(Color.white, for: .navigationBar)
                     if isMenuOpen {
                         // Menu content
                         VStack(alignment: .leading, spacing: 20) {
@@ -71,15 +71,34 @@ struct Acceuil: View {
                         .transition(.move(edge: .leading))
                         .zIndex(1)
                     }
-                    VStack {
+                    /*VStack {
                         List {
                             ForEach(title, id: \.self) { title in
                                 VStack(alignment: .leading) {
                                     Text(title).foregroundColor(.black)
                                 }
+                                Spacer()
                             }
                         }
-                    }.onAppear(perform: getGuests)
+                    }.onAppear(perform: getGuests)*/
+                    VStack {
+                        List(title, id: \.self) { title in
+                            VStack(alignment: .leading, spacing: 8) {
+                                Text(title)
+                                    .font(.headline)
+                                Spacer()
+                            }
+                            .padding()
+                            .background(Color(red: 255/255, green: 244/255, blue: 229/255, opacity: 1.0))
+                            .cornerRadius(10)
+                            .shadow(color: Color.gray.opacity(0.4), radius: 4, x: 0, y: 2)
+                        }
+                        .padding(.horizontal)
+                    }
+                    .background(Color.gray.opacity(0.1))
+                    .onAppear(perform: getGuests)
+
+
             
                     /*NavigationView {
                                 List {
@@ -183,7 +202,8 @@ struct Acceuil: View {
                         if let eventsArray = dictionary["events"] as? [[String: Any]] {
                             for event in eventsArray {
                                 if let eventName = event["name"] as? String, let eventAddress = event["address"] as? String, let eventDescription = event["description"] as? String, let eventStart = event["start"] as? String, let eventEnd = event["end"] as? String {
-                                    let eventTitle = "\(eventName) - \(eventAddress) - \(eventDescription) \n\(eventStart) - \(eventEnd)"
+                                    /*let eventTitle = "\(eventName) - \(eventAddress) - \(eventDescription) \n\(eventStart) - \(eventEnd)"*/
+                                    let eventTitle = "\(eventName) \t-\t \(eventAddress)\n\n\(eventDescription)\n\n\(eventStart) \t-\t \(eventEnd)"
                                     title.append(eventTitle)
                                 }
                             }
