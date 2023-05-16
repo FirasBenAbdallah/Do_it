@@ -16,7 +16,7 @@ class SendCode: UIViewController {
     @IBAction func sendCode(_ sender: UIButton) {
         let email = emailTextField.text!
         
-        let url = URL(string: "http://172.17.6.45:3000/sendPasswordRecoveryEmail")!
+        let url = URL(string: "http://172.17.0.102:3000/sendPasswordRecoveryEmail")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")

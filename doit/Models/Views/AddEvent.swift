@@ -435,7 +435,7 @@ struct AddEvent: View {
     
     func addEvent() {
             // Set the URL of your Node.js server
-            guard let url = URL(string: "http://172.17.6.45:3000/addevent") else { return }
+            guard let url = URL(string: "http://172.17.0.102:3000/addevent") else { return }
         var dateString = ""
         var dateString2 = ""
 

@@ -185,7 +185,7 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="WhQ-wy-dza" customClass="SendCode" customModule="doit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IH8-BD-Mvh">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="7sf-3V-HXG" customClass="FormTextField" customModule="doit" customModuleProvider="target">
@@ -409,7 +409,7 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="phonePad" textContentType="tel"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.47450980390000003" green="0.38431372549999998" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" name="AccentColor"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                         <real key="value" value="0.5"/>
@@ -506,7 +506,7 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="signup:" destination="QbG-ip-SfQ" eventType="touchUpInside" id="NCP-jL-PAg"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="tCg-bB-LAf"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="SignupToLogin" id="CpZ-c0-Ago"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="do it !" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XmH-vw-tSg">
@@ -586,11 +586,14 @@
                         <outlet property="address" destination="24W-iz-Nec" id="aRD-5h-5WJ"/>
                         <outlet property="confpass" destination="GzR-yq-7xD" id="0Yn-rc-aVn"/>
                         <outlet property="date" destination="UWE-ko-Umu" id="0KN-ZU-Rf2"/>
+                        <outlet property="doit" destination="XmH-vw-tSg" id="fZY-Hh-4ql"/>
                         <outlet property="email" destination="2eI-Wd-Nzl" id="Fsz-rx-ASS"/>
                         <outlet property="fullname" destination="c1Y-bP-o4T" id="yk9-RB-MY1"/>
                         <outlet property="imageView" destination="KU5-6U-vLr" id="sV3-XW-iCB"/>
                         <outlet property="password" destination="kVJ-Ke-i9w" id="R0b-J7-Byb"/>
                         <outlet property="phone" destination="qE2-SE-Adl" id="hh4-ld-Bf1"/>
+                        <outlet property="showHideConfPass1" destination="Obs-4Q-TX1" id="KWl-br-U6t"/>
+                        <outlet property="showHidePassword1" destination="k8V-r4-Sb7" id="TfC-M2-Uhy"/>
                         <outlet property="signup" destination="W0e-uQ-mW3" id="pOj-46-h8S"/>
                     </connections>
                 </viewController>
@@ -697,7 +700,7 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="tCg-bB-LAf"/>
+        <segue reference="CpZ-c0-Ago"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="eye" catalog="system" width="128" height="79"/>
@@ -705,6 +708,9 @@
         <image name="iphone.gen1" catalog="system" width="112" height="128"/>
         <image name="person.circle.fill" catalog="system" width="128" height="123"/>
         <image name="square" catalog="system" width="128" height="114"/>
+        <namedColor name="AccentColor">
+            <color red="0.47499999403953552" green="0.38400000333786011" blue="0.1289999932050705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="Background">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

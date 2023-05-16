@@ -176,7 +176,7 @@ struct Acceuil: View {
     }
 
     func fetchGuest(completion: @escaping(Result<[TaskEntry],APIError>) -> Void) {
-        let url = URL(string : "http://172.17.6.45:3000/getevent")
+        let url = URL(string : "http://172.17.0.102:3000/getevent")
         fetch2(type: [TaskEntry].self, url: url, completion: completion)
     }
     
