@@ -11,152 +11,189 @@ struct Acceuil: View {
     @State private var title: [String] = []
     @State private var isMenuOpen = false
     @State var results = [TaskEntry]()
-
+    @State private var isShowingCommentView = false
+    @State var isThumbsUpClicked: Bool = false
+    @State var isThumbsDownClicked: Bool = false
+    @State private var pubs: [TaskPublication] = []
+    
     var body: some View {
-            NavigationView {
-                ZStack {
-                   Color("Background")
-                        .edgesIgnoringSafeArea(.all).toolbarBackground(Color.white, for: .navigationBar)
-                    if isMenuOpen {
-                        // Menu content
-                        VStack(alignment: .leading, spacing: 20) {
-                            Image("Profile")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 80, height: 80)
-                                .clipShape(Circle())
-                            
-                            Text("John Doe")
-                                .font(.title)
-                                .bold()
-                                .foregroundColor(.white)
-                            
-                            Divider()
-                                .background(Color.white)
-                            
-                            NavigationLink(
-                                destination: Text("Settings"),
-                                label: {
-                                    Label("Setting", systemImage: "gear")
-                                        .font(.headline)
-                                        .foregroundColor(.white)
-                                }
-                            )
-                            
-                            NavigationLink(
-                                destination: AboutView(),
-                                label: {
-                                    Label("About", systemImage: "info.circle")
-                                        .font(.headline)
-                                        .foregroundColor(.white)
-                                }
-                            )
-                            
-                            Spacer()
-                            
-                            Button(action: {
-                                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                                let viewController = storyboard.instantiateViewController(withIdentifier: "Home")
-                                UIApplication.shared.windows.first?.rootViewController = viewController
-                            }, label: {
-                                Label("LogOut", systemImage: "power")
+        NavigationView {
+            ZStack {
+                Color("Background")
+                    .edgesIgnoringSafeArea(.all).toolbarBackground(Color.white, for: .navigationBar)
+                if isMenuOpen {
+                    // Menu content
+                    VStack(alignment: .leading, spacing: 20) {
+                        Image("Profile")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 80, height: 80)
+                            .clipShape(Circle())
+                        
+                        Text("John Doe")
+                            .font(.title)
+                            .bold()
+                            .foregroundColor(.white)
+                        
+                        Divider()
+                            .background(Color.white)
+                        
+                        NavigationLink(
+                            destination: Text("Settings"),
+                            label: {
+                                Label("Setting", systemImage: "gear")
                                     .font(.headline)
                                     .foregroundColor(.white)
-                            })
-                        }
-                        .padding(.top, 50)
-                        .padding(.horizontal, 30)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .background(Color("Menu"))
-                        .transition(.move(edge: .leading))
-                        .zIndex(1)
-                    }
-                    /*VStack {
-                        List {
-                            ForEach(title, id: \.self) { title in
-                                VStack(alignment: .leading) {
-                                    Text(title).foregroundColor(.black)
-                                }
-                                Spacer()
                             }
-                        }
-                    }.onAppear(perform: getGuests)*/
-                    VStack {
-                        List(title, id: \.self) { title in
-                            VStack(alignment: .leading, spacing: 8) {
-                                Text(title)
+                        )
+                        
+                        NavigationLink(
+                            destination: AboutView(),
+                            label: {
+                                Label("About", systemImage: "info.circle")
                                     .font(.headline)
+                                    .foregroundColor(.white)
+                            }
+                        )
+                        
+                        Spacer()
+                        
+                        Button(action: {
+                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                            let viewController = storyboard.instantiateViewController(withIdentifier: "Home")
+                            UIApplication.shared.windows.first?.rootViewController = viewController
+                        }, label: {
+                            Label("LogOut", systemImage: "power")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                        })
+                    }
+                    .padding(.top, 50)
+                    .padding(.horizontal, 30)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .background(Color("Menu"))
+                    .transition(.move(edge: .leading))
+                    .zIndex(1)
+                }
+                /*VStack {
+                 List {
+                 ForEach(title, id: \.self) { title in
+                 VStack(alignment: .leading) {
+                 Text(title).foregroundColor(.black)
+                 }
+                 Spacer()
+                 }
+                 }
+                 }.onAppear(perform: getGuests)*/
+                VStack {
+                    List(title, id: \.self) { title in
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text(title)
+                                .font(.headline)
+                            Spacer()
+                            HStack (alignment: .top, spacing: 16){
+                                Spacer()
+                                Image(systemName: "hand.thumbsup")
+                                    .foregroundColor(isThumbsUpClicked ? .red : .blue)
+                                    .font(.system(size: 30))
+                                    .onTapGesture {
+                                        isThumbsUpClicked = true
+                                        isThumbsDownClicked = false
+                                    }
+                                Spacer()
+                                Image(systemName: "hand.thumbsdown")
+                                    .foregroundColor(isThumbsDownClicked ? .red : .blue)
+                                    .font(.system(size: 30))
+                                    .onTapGesture {
+                                        isThumbsDownClicked = true
+                                        isThumbsUpClicked = false
+                                    }
+                                Spacer()
+                                VStack {
+                                    Image(systemName: "text.bubble")
+                                        .foregroundColor(.blue)
+                                        .font(.system(size: 30))
+                                        .onTapGesture {
+                                            isShowingCommentView = true
+                                        }
+                                    Spacer()
+                                }
+                                .sheet(isPresented: $isShowingCommentView) {
+                                    CommentListView()
+                                }
+                                Spacer()
                                 Spacer()
                             }
-                            .padding()
-                            .background(Color(red: 255/255, green: 244/255, blue: 229/255, opacity: 1.0))
-                            .cornerRadius(10)
-                            .shadow(color: Color.gray.opacity(0.4), radius: 4, x: 0, y: 2)
                         }
-                        .padding(.horizontal)
+                        .padding()
+                        .background(Color(red: 255/255, green: 244/255, blue: 229/255, opacity: 1.0))
+                        .cornerRadius(10)
+                        .shadow(color: Color.gray.opacity(0.4), radius: 4, x: 0, y: 2)
                     }
-                    .background(Color.gray.opacity(0.1))
-                    .onAppear(perform: getGuests)
-
-
-            
-                    /*NavigationView {
-                                List {
-                                    ForEach(publications) { publication in
-                                        VStack(alignment: .leading, spacing: 16) {
-                                            HStack(alignment: .top, spacing: 16) {
-                                            Image(publication.friendImageName)
-                                                    .resizable()
-                                                    .frame(width: 50, height: 50)
-                                                    .clipShape(Circle())
-                                                Text(publication.friendName)
-                                                    .font(.headline)
-                                            }
-                                            Text(publication.content)
-                                                .font(.body)
-                                            Image(publication.imageName)
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fill)
-                                                .frame(height: 200)
-                                                .clipped()
-                                            HStack (alignment: .top, spacing: 16){
-                                                Image(systemName: "hand.thumbsup")
-                                                .foregroundColor(.blue)
-                                                .font(.system(size: 30))
-                                                    Spacer()
-                                                Image(systemName: "hand.thumbsdown")
-                                                    .foregroundColor(.blue)
-                                                    .font(.system(size: 30))
-                                                Spacer()
-                                                Image(systemName: "text.bubble")
-                                                    .foregroundColor(.blue)
-                                                    .font(.system(size: 30))
-                                                Spacer()
-                                                Image(systemName: "arrowshape.turn.up.right")
-                                                    .foregroundColor(.blue)
-                                                    .font(.system(size: 30))
-                                                Spacer()
-
-                                            }.padding(.horizontal)
-                                        }
-                                    }
-                                }
-                            .navigationBarTitle("Publications")
-                            }*/
+                    .padding(.horizontal)
                 }
-                .navigationBarTitle("Do it !")
-                .navigationBarTitleDisplayMode(.inline)
-                .navigationBarItems(leading: Button(action: {
-                    withAnimation {
-                        isMenuOpen.toggle()
-                    }
-                }, label: {
-                    Image(systemName: "line.horizontal.3")
-                        .foregroundColor(.primary)
-                }))
-
+                .background(Color.gray.opacity(0.1))
+                .onAppear(perform: getGuests)
+                
+                
+                
+                /*NavigationView {
+                 List {
+                 ForEach(publications) { publication in
+                 VStack(alignment: .leading, spacing: 16) {
+                 HStack(alignment: .top, spacing: 16) {
+                 Image(publication.friendImageName)
+                 .resizable()
+                 .frame(width: 50, height: 50)
+                 .clipShape(Circle())
+                 Text(publication.friendName)
+                 .font(.headline)
+                 }
+                 Text(publication.content)
+                 .font(.body)
+                 Image(publication.imageName)
+                 .resizable()
+                 .aspectRatio(contentMode: .fill)
+                 .frame(height: 200)
+                 .clipped()
+                 HStack (alignment: .top, spacing: 16){
+                 Image(systemName: "hand.thumbsup")
+                 .foregroundColor(.blue)
+                 .font(.system(size: 30))
+                 Spacer()
+                 Image(systemName: "hand.thumbsdown")
+                 .foregroundColor(.blue)
+                 .font(.system(size: 30))
+                 Spacer()
+                 Image(systemName: "text.bubble")
+                 .foregroundColor(.blue)
+                 .font(.system(size: 30))
+                 Spacer()
+                 Image(systemName: "arrowshape.turn.up.right")
+                 .foregroundColor(.blue)
+                 .font(.system(size: 30))
+                 Spacer()
+                 
+                 }.padding(.horizontal)
+                 }
+                 }
+                 }
+                 .navigationBarTitle("Publications")
+                 }*/
             }
-            .navigationViewStyle(StackNavigationViewStyle())
+            .navigationBarTitle("Do it !")
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarItems(leading: Button(action: {
+                withAnimation {
+                    isMenuOpen.toggle()
+                }
+            }, label: {
+                Image(systemName: "line.horizontal.3")
+                    .foregroundColor(.primary)
+            }))
+            
+        }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     func getGuests() {
@@ -174,13 +211,13 @@ struct Acceuil: View {
             }
         }
     }
-
+    
     func fetchGuest(completion: @escaping(Result<[TaskEntry],APIError>) -> Void) {
-        let url = URL(string : "http://172.17.0.102:3000/getevent")
+        let url = URL(string : "http://172.17.3.120:3000/getevent")
         fetch2(type: [TaskEntry].self, url: url, completion: completion)
     }
     
-
+    
     func fetch2<T: Decodable>(type: T.Type, url: URL?, completion: @escaping(Result<T,APIError>) -> Void) {
         guard let url = url else {
             let error = APIError.badURL
@@ -195,7 +232,7 @@ struct Acceuil: View {
             } else if let data = data {
                 let jsonString = String(data: data, encoding: .utf8)
                 let jsonData = jsonString?.data(using: .utf8)!
-
+                
                 do {
                     let jsonObject = try JSONSerialization.jsonObject(with: jsonData!, options: [])
                     if let dictionary = jsonObject as? [String: Any] {
@@ -221,7 +258,7 @@ struct Acceuil: View {
             }
         }.resume()
     }
-
+    
     
 }
 
@@ -236,31 +273,39 @@ enum APIError: Error, CustomStringConvertible {
     
     var description: String {
         switch self {
-            case .badURL:
-                return "badURL"
-            case .urlSession(let error):
-                return "urlSession error: \(error.debugDescription)"
-            case .badResponse(let statusCode):
-                return "bad response with status code: \(statusCode)"
-            case .decoding(let decodingError):
-                return "decoding error: \(decodingError)"
-            case .unknown:
-                return "unknown error"
+        case .badURL:
+            return "badURL"
+        case .urlSession(let error):
+            return "urlSession error: \(error.debugDescription)"
+        case .badResponse(let statusCode):
+            return "bad response with status code: \(statusCode)"
+        case .decoding(let decodingError):
+            return "decoding error: \(decodingError)"
+        case .unknown:
+            return "unknown error"
         }
     }
     
     var localizedDescription: String {
         switch self {
-            case .badURL, .unknown:
-               return "something went wrong"
-            case .urlSession(let urlError):
-                return urlError?.localizedDescription ?? "something went wrong"
-            case .badResponse(_):
-                return "something went wrong"
-            case .decoding(let decodingError):
-                return decodingError?.localizedDescription ?? "something went wrong"
+        case .badURL, .unknown:
+            return "something went wrong"
+        case .urlSession(let urlError):
+            return urlError?.localizedDescription ?? "something went wrong"
+        case .badResponse(_):
+            return "something went wrong"
+        case .decoding(let decodingError):
+            return decodingError?.localizedDescription ?? "something went wrong"
         }
     }
+}
+
+struct TaskPublication: Codable {
+    var id = UUID()
+    var name_user : String
+    var image_user : String
+    var contenu: String
+    var image: Data?
 }
 
 struct Acceuil_Previews: PreviewProvider {
@@ -273,6 +318,6 @@ struct Acceuil_Previews: PreviewProvider {
 
 
 
-   
+
 
 
