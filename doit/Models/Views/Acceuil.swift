@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 struct Acceuil: View {
     @State private var title: [String] = []
     @State private var isMenuOpen = false
@@ -15,6 +16,7 @@ struct Acceuil: View {
     @State var isThumbsUpClicked: Bool = false
     @State var isThumbsDownClicked: Bool = false
     @State private var pubs: [TaskPublication] = []
+    @State private var selectedIndex: Int? = nil
     
     var body: some View {
         NavigationView {
@@ -75,53 +77,51 @@ struct Acceuil: View {
                     .transition(.move(edge: .leading))
                     .zIndex(1)
                 }
-                /*VStack {
-                 List {
-                 ForEach(title, id: \.self) { title in
-                 VStack(alignment: .leading) {
-                 Text(title).foregroundColor(.black)
-                 }
-                 Spacer()
-                 }
-                 }
-                 }.onAppear(perform: getGuests)*/
+                
+                
                 VStack {
-                    List(title, id: \.self) { title in
+                    List(/*title, id: \.self*/Array(title.enumerated()), id: \.1) { index, titles in
                         VStack(alignment: .leading, spacing: 8) {
-                            Text(title)
+                            Text(titles)
                                 .font(.headline)
                             Spacer()
                             HStack (alignment: .top, spacing: 16){
                                 Spacer()
-                                Image(systemName: "hand.thumbsup")
-                                    .foregroundColor(isThumbsUpClicked ? .red : .blue)
-                                    .font(.system(size: 30))
+                                Image(/*systemName: isThumbsUpClicked ?*/systemName: isThumbsUpClicked && selectedIndex == index ? "heart.fill" : "heart")
+                                    .foregroundColor(isThumbsUpClicked ? .red : .accentColor)
+                                    .font(.system(size: 25))
                                     .onTapGesture {
                                         isThumbsUpClicked = true
                                         isThumbsDownClicked = false
+                                        //print(title.)
+                                        if let separatorIndex = title[index].firstIndex(of: "-") {
+                                            let substring = title[index][..<separatorIndex].trimmingCharacters(in: .whitespaces)
+                                            print("Substring until first '-': \(substring)")
+                                        }
+                                        
+                                        selectedIndex = index // Set the selected index
+                                        print("Index of like image: \(index)")
                                     }
                                 Spacer()
-                                Image(systemName: "hand.thumbsdown")
-                                    .foregroundColor(isThumbsDownClicked ? .red : .blue)
-                                    .font(.system(size: 30))
+                                Image(systemName: isThumbsDownClicked ? "hand.thumbsdown.circle.fill" : "hand.thumbsdown.circle")
+                                    .foregroundColor(isThumbsDownClicked ? .black : .accentColor)
+                                    .font(.system(size: 25))
                                     .onTapGesture {
                                         isThumbsDownClicked = true
                                         isThumbsUpClicked = false
                                     }
                                 Spacer()
                                 VStack {
-                                    Image(systemName: "text.bubble")
-                                        .foregroundColor(.blue)
-                                        .font(.system(size: 30))
+                                    Image(systemName: "message")
+                                        .foregroundColor(.accentColor)
+                                        .font(.system(size: 25))
                                         .onTapGesture {
                                             isShowingCommentView = true
                                         }
-                                    Spacer()
                                 }
                                 .sheet(isPresented: $isShowingCommentView) {
                                     CommentListView()
                                 }
-                                Spacer()
                                 Spacer()
                             }
                         }
@@ -134,52 +134,6 @@ struct Acceuil: View {
                 }
                 .background(Color.gray.opacity(0.1))
                 .onAppear(perform: getGuests)
-                
-                
-                
-                /*NavigationView {
-                 List {
-                 ForEach(publications) { publication in
-                 VStack(alignment: .leading, spacing: 16) {
-                 HStack(alignment: .top, spacing: 16) {
-                 Image(publication.friendImageName)
-                 .resizable()
-                 .frame(width: 50, height: 50)
-                 .clipShape(Circle())
-                 Text(publication.friendName)
-                 .font(.headline)
-                 }
-                 Text(publication.content)
-                 .font(.body)
-                 Image(publication.imageName)
-                 .resizable()
-                 .aspectRatio(contentMode: .fill)
-                 .frame(height: 200)
-                 .clipped()
-                 HStack (alignment: .top, spacing: 16){
-                 Image(systemName: "hand.thumbsup")
-                 .foregroundColor(.blue)
-                 .font(.system(size: 30))
-                 Spacer()
-                 Image(systemName: "hand.thumbsdown")
-                 .foregroundColor(.blue)
-                 .font(.system(size: 30))
-                 Spacer()
-                 Image(systemName: "text.bubble")
-                 .foregroundColor(.blue)
-                 .font(.system(size: 30))
-                 Spacer()
-                 Image(systemName: "arrowshape.turn.up.right")
-                 .foregroundColor(.blue)
-                 .font(.system(size: 30))
-                 Spacer()
-                 
-                 }.padding(.horizontal)
-                 }
-                 }
-                 }
-                 .navigationBarTitle("Publications")
-                 }*/
             }
             .navigationBarTitle("Do it !")
             .navigationBarTitleDisplayMode(.inline)
@@ -195,6 +149,8 @@ struct Acceuil: View {
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
+    
+    
     
     func getGuests() {
         title = []

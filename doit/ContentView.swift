@@ -46,11 +46,11 @@ struct ContentView: View {
                             Image(systemName: "plus")
                             Text("Add")
                     }
-                ChatView()
+                /*ChatView()
                     .tabItem {
                         Image(systemName: "message")
                         Text("Chat")
-                    }
+                    }*/
                 Profile()
                     .tabItem(){
                             Image(systemName: "person.circle")

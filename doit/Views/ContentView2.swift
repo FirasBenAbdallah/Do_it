@@ -4,7 +4,7 @@
 //
 //  Created by FirasBenAbdallah on 14/4/2023.
 //
-
+/*
 import SwiftUI
 import Social
 import UIKit
@@ -616,3 +616,4 @@ struct ContentView2_Previews: PreviewProvider {
         ContentView2()
     }
 }
+*/

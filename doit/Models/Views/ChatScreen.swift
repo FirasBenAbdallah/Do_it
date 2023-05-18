@@ -14,11 +14,11 @@ struct ChatScreen: View {
     
     var body: some View {
         VStack {
-            ScrollView {
+            /*ScrollView {
                 ForEach(messages, id: \.self) { message in
-                    ChatBubble(text: message)
+                    /ChatBubble(text: message)
                 }
-            }
+            }*/
             
             HStack {
                 TextField("Type a message...", text: $message)
