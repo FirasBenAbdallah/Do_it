@@ -16,6 +16,7 @@ struct TaskEntry: Codable {
     var start: String
     var end: String
     var description: String
+    var pde: String
     
     /*
      var id: Int

@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     @IBOutlet var passwordTextField: FormTextField!
     
     @IBOutlet weak var checkbox: UIButton!
-
+    
     var isChecked: Bool! = false
     
     @IBAction func showHidePassword(_ sender: UIButton) {
@@ -68,7 +68,7 @@ class ViewController: UIViewController {
             
             // Check that the response status code indicates success
             guard (202...405).contains(response.statusCode) else {
-                    print("Error: invalid response status code \(response.statusCode)")
+                print("Error: invalid response status code \(response.statusCode)")
                 return
             }
             
@@ -93,15 +93,15 @@ class ViewController: UIViewController {
             }
         }
         task.resume()
-
+        
     }
     
     @IBOutlet weak var faceIDButton: UIButton!
-
+    
     @IBAction func faceIDButtonTapped(_ sender: Any) {
         let context = LAContext()
         var error: NSError?
-       
+        
         if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
             let reason = "Log in with Face ID"
             context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { (success, error) in
@@ -161,31 +161,31 @@ class ViewController: UIViewController {
     
     @IBAction func saveRememberTapped(_ sender: Any) {
         if(isChecked == true) {
-               UserDefaults.standard.set("1", forKey: "rememberMe")
-                UserDefaults.standard.set(emailTextField.text ?? "" , forKey: "userMail")
-               UserDefaults.standard.set(passwordTextField.text ?? "", forKey: "userPassword")
-               print("Mail & Password Saved Successfully")
+            UserDefaults.standard.set("1", forKey: "rememberMe")
+            UserDefaults.standard.set(emailTextField.text ?? "" , forKey: "userMail")
+            UserDefaults.standard.set(passwordTextField.text ?? "", forKey: "userPassword")
+            print("Mail & Password Saved Successfully")
             let mail = UserDefaults.standard.value(forKey: "userMail") as? String ?? ""
             //print("Saved password: \(mail)")
             sendMailToAnotherFile(mail)
-               }else{
-                   UserDefaults.standard.set("2", forKey: "rememberMe")
-               }
+        }else{
+            UserDefaults.standard.set("2", forKey: "rememberMe")
+        }
     }
     
     func CheckAndAdd(){
-            if UserDefaults.standard.string(forKey: "rememberMe") == "1" {
-                checkbox.setImage (UIImage(systemName: "checkmark.square.fill"), for: .normal)
-                isChecked = true
-                // Set values
-                self.emailTextField.text = UserDefaults.standard.string(forKey: "userMail") ?? ""
-                self.passwordTextField.text = UserDefaults.standard.string(forKey: "userPassword") ?? ""
-            }else{
-                checkbox.setImage (UIImage(systemName: "square"), for: .normal)
-                isChecked = false
-            }
+        if UserDefaults.standard.string(forKey: "rememberMe") == "1" {
+            checkbox.setImage (UIImage(systemName: "checkmark.square.fill"), for: .normal)
+            isChecked = true
+            // Set values
+            self.emailTextField.text = UserDefaults.standard.string(forKey: "userMail") ?? ""
+            self.passwordTextField.text = UserDefaults.standard.string(forKey: "userPassword") ?? ""
+        }else{
+            checkbox.setImage (UIImage(systemName: "square"), for: .normal)
+            isChecked = false
         }
-
+    }
+    
     
     func setup() {
         let contentView = ContentView()

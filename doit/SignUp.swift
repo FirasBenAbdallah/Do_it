@@ -8,18 +8,18 @@
 import UIKit
 
 class SignUp: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+    
     @IBOutlet weak var signup: UIButton!
     @IBOutlet weak var imageView: UIImageView!
     @IBAction func chooseImage(_ sender: UIButton) {
         let imagePicker = UIImagePickerController()
-                imagePicker.delegate = self
-                imagePicker.sourceType = .photoLibrary
-                present(imagePicker, animated: true, completion: nil)
+        imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true, completion: nil)
     }
     
-
-
+    
+    
     @IBOutlet weak var doit: UILabel!
     @IBOutlet weak var showHidePassword1: UIButton!
     @IBOutlet weak var showHideConfPass1: UIButton!
@@ -36,23 +36,23 @@ class SignUp: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     
     @IBAction func showHidePassword(_ sender: UIButton) {
         password.isSecureTextEntry.toggle()
-            // toggle the isSecureTextEntry property to show/hide the password
-            if password.isSecureTextEntry {
-                sender.setImage(UIImage(systemName: "eye"), for: .normal)
-            } else {
-                sender.setImage(UIImage(systemName: "eye.slash"), for: .normal)
-            }
-            // update the button image to show/hide the password
+        // toggle the isSecureTextEntry property to show/hide the password
+        if password.isSecureTextEntry {
+            sender.setImage(UIImage(systemName: "eye"), for: .normal)
+        } else {
+            sender.setImage(UIImage(systemName: "eye.slash"), for: .normal)
+        }
+        // update the button image to show/hide the password
     }
     @IBAction func showHideConfPass(_ sender: UIButton) {
         confpass.isSecureTextEntry.toggle()
-            // toggle the isSecureTextEntry property to show/hide the password
-            if confpass.isSecureTextEntry {
-                sender.setImage(UIImage(systemName: "eye"), for: .normal)
-            } else {
-                sender.setImage(UIImage(systemName: "eye.slash"), for: .normal)
-            }
-            // update the button image to show/hide the password
+        // toggle the isSecureTextEntry property to show/hide the password
+        if confpass.isSecureTextEntry {
+            sender.setImage(UIImage(systemName: "eye"), for: .normal)
+        } else {
+            sender.setImage(UIImage(systemName: "eye.slash"), for: .normal)
+        }
+        // update the button image to show/hide the password
     }
     
     @IBAction func signup(_ sender: UIButton) {
@@ -67,7 +67,7 @@ class SignUp: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
             let password = password.text!
             let confpass = confpass.text!
             
-            let url = URL(string: "http://172.17.0.102:3000/signup")!
+            let url = URL(string: "http://172.17.3.120:3000/signup")!
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -91,42 +91,42 @@ class SignUp: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
             
             let session = URLSession.shared
             let task = session.dataTask(with: request) { (data, response, error) in
-            // Check for any errors
-            guard error == nil else {
-                print("Error: \(error!)")
-                return
+                // Check for any errors
+                guard error == nil else {
+                    print("Error: \(error!)")
+                    return
+                }
+                
+                // Check that we got back a response
+                guard let response = response as? HTTPURLResponse else {
+                    print("Error: did not receive response")
+                    return
+                }
+                
+                // Check that the response status code indicates success
+                guard (200...299).contains(response.statusCode) else {
+                    print("Error: invalid response status code \(response.statusCode)")
+                    return
+                }
+                
+                // Check that we got back some data
+                guard let data = data else {
+                    print("Error: did not receive data")
+                    return
+                }
+                
+                // Parse the JSON data
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    print("Received JSON: \(json)")
+                } catch {
+                    print("Error parsing JSON: \(error)")
+                }
             }
-            
-            // Check that we got back a response
-            guard let response = response as? HTTPURLResponse else {
-                print("Error: did not receive response")
-                return
-            }
-            
-            // Check that the response status code indicates success
-            guard (200...299).contains(response.statusCode) else {
-                print("Error: invalid response status code \(response.statusCode)")
-                return
-            }
-            
-            // Check that we got back some data
-            guard let data = data else {
-                print("Error: did not receive data")
-                return
-            }
-            
-            // Parse the JSON data
-            do {
-                let json = try JSONSerialization.jsonObject(with: data, options: [])
-                print("Received JSON: \(json)")
-            } catch {
-                print("Error parsing JSON: \(error)")
-            }
-        }
-        task.resume()
+            task.resume()
             // Navigate to the login view (assuming you have a segue with identifier "toLoginView")
             //performSegue(withIdentifier: "SignupToLogin", sender: self)
-    }
+        }
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
@@ -160,7 +160,7 @@ class SignUp: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         fullname.placeholder = NSLocalizedString("Full Name", comment: "fullname")
         address.placeholder = NSLocalizedString("Address", comment: "address")
         signup.setTitle(NSLocalizedString("SIGN UP", comment: "signup"), for: .normal)
-        }
+    }
     
     
     func validateInput() -> Bool {
@@ -300,7 +300,7 @@ class SignUp: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
             password.layer.borderColor = UIColor.red.cgColor
             showHidePassword1.tintColor = UIColor.red
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-                    // Animate the color change back to the default or desired color
+                // Animate the color change back to the default or desired color
                 UIView.animate(withDuration: 0.3) {
                     self.password.layer.borderColor = UIColor(named: "AccentColor")?.cgColor
                     self.showHidePassword1.tintColor = UIColor(named: "AccentColor")
@@ -313,7 +313,7 @@ class SignUp: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
                 }
             }
         }
-
+        
         
         // Validate Confirm Password
         if confpass.text?.isEmpty ?? true || confpass.text != password.text {
@@ -327,18 +327,18 @@ class SignUp: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
             confpass.layer.borderColor = UIColor.red.cgColor
             showHideConfPass1.tintColor = UIColor.red
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-                    // Animate the color change back to the default or desired color
-                    UIView.animate(withDuration: 0.3) {
-                        self.confpass.layer.borderColor = UIColor(named: "AccentColor")?.cgColor
-                        self.showHideConfPass1.tintColor = UIColor(named: "AccentColor")
-                        let placeholderAttributes: [NSAttributedString.Key: Any] = [
-                            .foregroundColor: UIColor(named: "AccentColor")!
-                        ]
-                        let attributedPlaceholder = NSAttributedString(string: "Confirm Password", attributes: placeholderAttributes)
-                        // Assign the attributed placeholder to the text field
-                        self.confpass.attributedPlaceholder = attributedPlaceholder
-                    }
+                // Animate the color change back to the default or desired color
+                UIView.animate(withDuration: 0.3) {
+                    self.confpass.layer.borderColor = UIColor(named: "AccentColor")?.cgColor
+                    self.showHideConfPass1.tintColor = UIColor(named: "AccentColor")
+                    let placeholderAttributes: [NSAttributedString.Key: Any] = [
+                        .foregroundColor: UIColor(named: "AccentColor")!
+                    ]
+                    let attributedPlaceholder = NSAttributedString(string: "Confirm Password", attributes: placeholderAttributes)
+                    // Assign the attributed placeholder to the text field
+                    self.confpass.attributedPlaceholder = attributedPlaceholder
                 }
+            }
         }
         
         // Display error messages or highlight fields if needed
@@ -372,7 +372,7 @@ class SignUp: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         
         return isValid
     }
-
+    
     func isValidPhoneNumber(_ phoneNumber: String) -> Bool {
         let phoneRegex = #"^\d.*\d$"#
         let phonePredicate = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
@@ -390,17 +390,17 @@ class SignUp: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     func createDatePicker() {
         date.textAlignment = .left
         
-       // toolbar
-       let toolbar = UIToolbar()
-       toolbar.sizeToFit()
-             // bar button
+        // toolbar
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        // bar button
         let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector (donePressed))
-              toolbar.setItems ([doneBtn], animated: true)
+        toolbar.setItems ([doneBtn], animated: true)
         // assign toolbar
         date.inputAccessoryView = toolbar
-       // assign date picker to the text field
+        // assign date picker to the text field
         date.inputView = datePicker
-       // date picker mode
+        // date picker mode
         datePicker.datePickerMode = .date
     }
     @objc func donePressed () {
@@ -408,38 +408,38 @@ class SignUp: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
         formatter.timeStyle = .none
-                                              
+        
         date.text = formatter.string(from: datePicker.date)
         self.view.endEditing(true)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            imageView.contentMode = .scaleAspectFill
+            imageView.image = pickedImage
+            imageView.layer.cornerRadius = min(imageView.frame.width, imageView.frame.height) / 2.0
+            imageView.layer.masksToBounds = true
+            /*let smallerDimension = min(imageView.frame.width, imageView.frame.height)
+             imageView.layer.cornerRadius = smallerDimension / 2.0
+             imageView.clipsToBounds = true*/
             
-            if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-                imageView.contentMode = .scaleAspectFill
-                imageView.image = pickedImage
-                imageView.layer.cornerRadius = min(imageView.frame.width, imageView.frame.height) / 2.0
-                imageView.layer.masksToBounds = true
-                /*let smallerDimension = min(imageView.frame.width, imageView.frame.height)
-                imageView.layer.cornerRadius = smallerDimension / 2.0
-                imageView.clipsToBounds = true*/
-                
-            }
-            
-            dismiss(animated: true, completion: nil)
         }
         
-        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-            dismiss(animated: true, completion: nil)
-        }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        dismiss(animated: true, completion: nil)
     }
-    */
-
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

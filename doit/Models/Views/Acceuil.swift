@@ -103,7 +103,7 @@ struct Acceuil: View {
                                         print("Index of like image: \(index)")
                                     }
                                 Spacer()
-                                Image(systemName: isThumbsDownClicked ? "hand.thumbsdown.circle.fill" : "hand.thumbsdown.circle")
+                                Image(systemName: isThumbsDownClicked ? "heart.slash.fill" : "heart.slash")
                                     .foregroundColor(isThumbsDownClicked ? .black : .accentColor)
                                     .font(.system(size: 25))
                                     .onTapGesture {
@@ -188,7 +188,6 @@ struct Acceuil: View {
             } else if let data = data {
                 let jsonString = String(data: data, encoding: .utf8)
                 let jsonData = jsonString?.data(using: .utf8)!
-                
                 do {
                     let jsonObject = try JSONSerialization.jsonObject(with: jsonData!, options: [])
                     if let dictionary = jsonObject as? [String: Any] {
@@ -198,6 +197,7 @@ struct Acceuil: View {
                                     /*let eventTitle = "\(eventName) - \(eventAddress) - \(eventDescription) \n\(eventStart) - \(eventEnd)"*/
                                     let eventTitle = "\(eventName) \t-\t \(eventAddress)\n\n\(eventDescription)\n\n\(eventStart) \t-\t \(eventEnd)"
                                     title.append(eventTitle)
+                                    print(title)
                                 }
                             }
                         }

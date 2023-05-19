@@ -185,7 +185,7 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="WhQ-wy-dza" customClass="SendCode" customModule="doit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IH8-BD-Mvh">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="7sf-3V-HXG" customClass="FormTextField" customModule="doit" customModuleProvider="target">
@@ -218,7 +218,7 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="sendCode:" destination="WhQ-wy-dza" eventType="touchUpInside" id="Nbg-Ux-yFE"/>
-                                    <segue destination="ymg-TB-J0S" kind="showDetail" id="rBN-9D-eRB"/>
+                                    <segue destination="ymg-TB-J0S" kind="showDetail" identifier="changeToreset" id="rBN-9D-eRB"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Change Your Password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qav-ZN-Hn0">
